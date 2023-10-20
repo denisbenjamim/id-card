@@ -1,5 +1,10 @@
 package br.com.fiap.idcard.exceptions;
 
-public class PreCadastroException {
-    
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+public class PreCadastroException extends RuntimeException {
+    public PreCadastroException(final String mensagem){
+        super(mensagem);
+    }
 }
