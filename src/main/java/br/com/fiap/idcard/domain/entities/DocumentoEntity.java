@@ -1,16 +1,15 @@
 package br.com.fiap.idcard.domain.entities;
 
-import java.io.IOException;
 import java.time.LocalDate;
+import java.util.UUID;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
+import br.com.fiap.idcard.domain.dto.DocumentoDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -53,15 +52,13 @@ public abstract class DocumentoEntity {
     @Column(name = "tp_content")
     private String contentType;
 
-    public void setArquivo(MultipartFile multipartFile){
-        setNomeArquivo(multipartFile.getOriginalFilename());
-        setContentType(multipartFile.getContentType());
-        
-        try{
-            setDadosArquivo(multipartFile.getBytes());
-        } catch(IOException exception){
-            throw new RuntimeException(exception);
-        }
+    public DocumentoDTO toDTO(final UUID codigoPreCadastro){
+        return new DocumentoDTO(
+            codigoPreCadastro, 
+            getIdentificadorDocumento(), 
+            getDataEmissao()
+        );
     }
 
+    
 }

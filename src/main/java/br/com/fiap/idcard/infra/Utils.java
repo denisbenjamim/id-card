@@ -1,8 +1,5 @@
 package br.com.fiap.idcard.infra;
 
-import java.io.File;
-import java.util.Locale;
-
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ResourceBundleMessageSource;
 

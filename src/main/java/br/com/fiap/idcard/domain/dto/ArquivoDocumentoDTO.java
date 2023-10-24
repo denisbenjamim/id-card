@@ -1,4 +1,4 @@
-package br.com.fiap.idcard.domain.controller.dto;
+package br.com.fiap.idcard.domain.dto;
 
 import java.util.UUID;
 
@@ -10,3 +10,4 @@ public record ArquivoDocumentoDTO (
     String identificadorDocumento,
     MultipartFile arquivo
 ) {}
+
