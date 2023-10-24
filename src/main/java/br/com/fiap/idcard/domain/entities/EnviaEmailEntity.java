@@ -20,11 +20,7 @@ public class EnviaEmailEntity {
     private PreCadastroEntity preCadastro;
 
     @Enumerated(EnumType.STRING)
-    private StatusPreCadastro tipoEnvioEmail;
+    private StatusEnviaEmailPreCadastro tipoEnvioEmail;
     private LocalDateTime dataHoraEnvio;
 
-    @PrePersist
-    public void prePersist(){
-        dataHoraEnvio = LocalDateTime.now();
-    }
 }
