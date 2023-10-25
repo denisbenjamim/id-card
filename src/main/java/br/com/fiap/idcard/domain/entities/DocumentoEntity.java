@@ -52,13 +52,16 @@ public abstract class DocumentoEntity {
     @Column(name = "tp_content")
     private String contentType;
 
-    public DocumentoDTO toDTO(final UUID codigoPreCadastro){
+    public DocumentoDTO toDTO(final UUID codigoPreCadastro, final String tipoDocumento){
         return new DocumentoDTO(
             codigoPreCadastro, 
             getIdentificadorDocumento(), 
-            getDataEmissao()
+            getDataEmissao(),
+                tipoDocumento
         );
     }
 
-    
+    public String getTipoArquivoPeloNomeDaClasse() {
+        return this.getClass().getSimpleName().replace("Entity", "").toUpperCase();
+    }
 }

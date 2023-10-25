@@ -74,7 +74,7 @@ public class PreCadastroEntity {
 
     public List<DocumentoDTO> getDocumentosDTO(){
         return documentos.stream()
-            .map(documento -> documento.toDTO(codigoPreCadastro))
+            .map(documento -> documento.toDTO(codigoPreCadastro, documento.getTipoArquivoPeloNomeDaClasse()))
         .collect(Collectors.toList());
     }
 
