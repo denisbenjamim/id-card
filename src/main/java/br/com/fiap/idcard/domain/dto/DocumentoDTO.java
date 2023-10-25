@@ -21,17 +21,25 @@ public record DocumentoDTO(
     String tipo
 ) {
    
-    public DocumentoDTO( UUID codigoPreCadastro, String identificadorDocumento, LocalDate dataEmissao){
-        this(codigoPreCadastro, identificadorDocumento, dataEmissao, null, null, null, null, null);
-    }
-
-    public DocumentoDTO( UUID codigoPreCadastro, String identificadorDocumento, MultipartFile arquivo){
-        this(codigoPreCadastro, identificadorDocumento, null, null, null, null, arquivo, null);
+    public DocumentoDTO( UUID codigoPreCadastro, String identificadorDocumento, LocalDate dataEmissao, String tipo){
+        this(codigoPreCadastro, identificadorDocumento, dataEmissao, null, null, null, null, tipo);
     }
 
     public DocumentoEntity toDocumentoEntity(){
         final DocumentoEntity entity = TipoDocumento.getInstanceBy(tipo);
-       
+
+        entity.setContentType(contentType);
+        entity.setDadosArquivo(dadosArquivo);
+        entity.setDataEmissao(dataEmissao);
+        entity.setIdentificadorDocumento(identificadorDocumento);
+        entity.setNomeArquivo(nomeArquivo);
+
+        return entity;
+    }
+
+    public DocumentoEntity toDocumentoEntity(String tipo){
+        final DocumentoEntity entity = TipoDocumento.getInstanceBy(tipo);
+
         entity.setContentType(contentType);
         entity.setDadosArquivo(dadosArquivo);
         entity.setDataEmissao(dataEmissao);
