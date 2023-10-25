@@ -26,15 +26,7 @@ public record DocumentoDTO(
     }
 
     public DocumentoEntity toDocumentoEntity(){
-        final DocumentoEntity entity = TipoDocumento.getInstanceBy(tipo);
-
-        entity.setContentType(contentType);
-        entity.setDadosArquivo(dadosArquivo);
-        entity.setDataEmissao(dataEmissao);
-        entity.setIdentificadorDocumento(identificadorDocumento);
-        entity.setNomeArquivo(nomeArquivo);
-
-        return entity;
+        return toDocumentoEntity(tipo);
     }
 
     public DocumentoEntity toDocumentoEntity(String tipo){

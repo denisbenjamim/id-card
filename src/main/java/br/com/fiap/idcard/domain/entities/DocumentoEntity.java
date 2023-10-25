@@ -57,11 +57,11 @@ public abstract class DocumentoEntity {
             codigoPreCadastro, 
             getIdentificadorDocumento(), 
             getDataEmissao(),
-                tipoDocumento
+            tipoDocumento
         );
     }
 
     public String getTipoArquivoPeloNomeDaClasse() {
-        return this.getClass().getSimpleName().replace("Entity", "").toUpperCase();
+        return this.getClass().getSimpleName().replace("Entity", "");
     }
 }

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class EnviaEmailService {
@@ -18,11 +17,6 @@ public class EnviaEmailService {
     public List<EnviaEmailEntity> findAll(){
         return emailRepository.findAll();
     }
-
-    /*
-    public List<EnviaEmailEntity> findAllByPreCadastro(final UUID uuid){
-        return emailRepository.findAllByPreCadastro(uuid);
-    }*/
 
     public List<EnviaEmailEntity> findAllByTipoEnvioEmail(final StatusEnviaEmailPreCadastro tipoEnvioEmail){
         return emailRepository.findAllByTipoEnvioEmail(tipoEnvioEmail);
@@ -39,11 +33,6 @@ public class EnviaEmailService {
     public void delete(final Long id){
         emailRepository.deleteById(id);
     }
-
-    /*
-    public void deleteByPreCadastro(final UUID uuid){
-        emailRepository.deleteByPreCadastro(uuid);
-    }*/
 
     public void enviaEmail(EnviaEmailEntity enviaEmailEntity){
         System.out.println("Enviando email para: " + enviaEmailEntity.getPreCadastro().getEmail());
