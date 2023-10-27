@@ -26,7 +26,7 @@ public class EnviaEmailPreCadastro {
         private final long MINUTO = SEGUNDO * 60;
         private final long HORA = MINUTO * 60;
 
-        @Scheduled(initialDelay = SEGUNDO * 3, fixedDelay = SEGUNDO * 10)
+        @Scheduled(initialDelay = SEGUNDO * 3, fixedDelay = HORA)
         public void enviarEmail() {
             List<PreCadastroDTO> preCadastrosRevalidar = preCadastroService.getPreCadastroComStatus(StatusPreCadastro.REVALIDAR);
             List<EnviaEmailEntity> emailsEnviadosRevalidar = enviaEmailService.findAllByTipoEnvioEmail(StatusEnviaEmailPreCadastro.REVALIDAR);
