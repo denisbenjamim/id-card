@@ -4,6 +4,8 @@ import br.com.fiap.idcard.domain.dto.ArquivoDocumentoDTO;
 import br.com.fiap.idcard.domain.dto.PreCadastroDTO;
 import br.com.fiap.idcard.domain.entities.StatusPreCadastro;
 import br.com.fiap.idcard.domain.services.PreCadastroService;
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,14 +28,14 @@ public class PreCadastroController {
     }
 
     @PostMapping
-    public ResponseEntity<UUID> criarPreCadastro(@RequestBody final PreCadastroDTO dto){
+    public ResponseEntity<UUID> criarPreCadastro(@Valid @RequestBody final PreCadastroDTO dto){
         return ResponseEntity
             .status(HttpStatus.CREATED)
             .body(service.salvar(dto));
     }
 
     @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> upload(ArquivoDocumentoDTO documentosDTO){
+    public ResponseEntity<?> upload(@Valid ArquivoDocumentoDTO documentosDTO){
        
         service.salvarArquivoDocumento(documentosDTO);
         return ResponseEntity
