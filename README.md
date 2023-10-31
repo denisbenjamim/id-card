@@ -1,7 +1,7 @@
 
 # 🚀 ID-CARD
 
-Tech-challenger com tematica documento único. Criação de identificador unico, para ser utilizado no lugar dos documentos CPF, RG, CNH  dentre outros.
+Tech-challenge com temática documento único. Criação de identificador unico, para ser utilizado no lugar dos documentos CPF, RG, CNH  dentre outros.
 
 
 
